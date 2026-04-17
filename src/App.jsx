@@ -493,7 +493,7 @@ export default function App() {
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
             <div style={{ width: 32, height: 32, borderRadius: 6, background: "var(--accent)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, flexShrink: 0 }}>◈</div>
             <div>
-              <div style={{ fontWeight: 800, fontSize: 15, letterSpacing: 0.5 }}>URBAN GROWTH ENGINE</div>
+              <div style={{ fontWeight: 800, fontSize: 15, letterSpacing: 0.5 }}>UrbanPulse AI</div>
               <div style={{ fontSize: 9, fontFamily: "var(--font-mono)", color: "var(--muted)", letterSpacing: 1 }}>PREDICTIVE REAL ESTATE ANALYTICS · INDIA</div>
             </div>
           </div>
