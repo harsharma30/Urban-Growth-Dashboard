@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 
-// ── Palette & design tokens ──────────────────────────────────────────────────
 const CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap');
 
@@ -33,7 +32,6 @@ const CSS = `
   @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
 `;
 
-// ── Fake zone data ────────────────────────────────────────────────────────────
 const ZONES = [
   { id:1,  name:"Aerocity Corridor",    city:"Delhi",    lat:28.56, lng:77.12, gvs:9.2, muni:9.5, market:8.8, price:"+22%", rental:"88%", status:"HOT",    trend:"up",   projects:["IGI Metro Ext.","NH-8 Widening"],        forecast:"₹18,200/sqft by 2027", listings:1240, appreciation:"+31% YoY" },
   { id:2,  name:"Sector 82–90 Belt",    city:"Mohali",   lat:30.71, lng:76.69, gvs:8.7, muni:9.1, market:8.3, price:"+18%", rental:"82%", status:"HOT",    trend:"up",   projects:["Aerotropolis Phase 2","IT SEZ"],           forecast:"₹9,800/sqft by 2027",  listings:890,  appreciation:"+24% YoY" },
@@ -50,7 +48,6 @@ const ZONES = [
 const STATUS_COLOR = { HOT:"#00e5a0", RISING:"#4a9eff", STABLE:"#ffd700", WATCH:"#ff6b35" };
 const STATUS_BG    = { HOT:"#00e5a010", RISING:"#4a9eff10", STABLE:"#ffd70010", WATCH:"#ff6b3510" };
 
-// ── Tiny components ───────────────────────────────────────────────────────────
 function Tag({ status }) {
   return (
     <span style={{
@@ -93,7 +90,6 @@ function MiniSparkline({ value }) {
   );
 }
 
-// ── Heatmap (SVG-based city grid) ─────────────────────────────────────────────
 function HeatMap({ zones, selected, onSelect }) {
   const cities = [...new Set(zones.map(z => z.city))];
   const gridW = 520, gridH = 360;
@@ -203,7 +199,6 @@ function HeatMap({ zones, selected, onSelect }) {
   );
 }
 
-// ── Zone Detail Panel ─────────────────────────────────────────────────────────
 function ZoneDetail({ zone, onClose }) {
   if (!zone) return (
     <div style={{ padding: 32, textAlign: "center", color: "var(--muted)", fontFamily: "var(--font-mono)", fontSize: 12 }}>
@@ -292,7 +287,6 @@ function ZoneDetail({ zone, onClose }) {
   );
 }
 
-// ── Data Ingestion Simulator ──────────────────────────────────────────────────
 function IngestionPanel({ onIngest }) {
   const [sources, setSources] = useState([
     { id: 1, name: "MagicBricks Scraper",   type: "MARKET",  status: "idle",    last: "2h ago" },
@@ -355,7 +349,6 @@ function IngestionPanel({ onIngest }) {
   );
 }
 
-// ── Analytics Panel ───────────────────────────────────────────────────────────
 function AnalyticsPanel({ zones }) {
   const hot    = zones.filter(z => z.status === "HOT").length;
   const rising = zones.filter(z => z.status === "RISING").length;
@@ -413,7 +406,6 @@ function AnalyticsPanel({ zones }) {
   );
 }
 
-// ── Zone Table ────────────────────────────────────────────────────────────────
 function ZoneTable({ zones, selected, onSelect, filter }) {
   const filtered = zones
     .filter(z => !filter || z.status === filter || z.city.toLowerCase().includes(filter.toLowerCase()) || z.name.toLowerCase().includes(filter.toLowerCase()))
@@ -452,7 +444,6 @@ function ZoneTable({ zones, selected, onSelect, filter }) {
   );
 }
 
-// ── Main App ──────────────────────────────────────────────────────────────────
 export default function App() {
   const [selected, setSelected]   = useState(null);
   const [activeTab, setActiveTab] = useState("map");
